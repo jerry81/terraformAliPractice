@@ -82,3 +82,7 @@ resource "alicloud_logtail_config" "onesubscription-staging" {
     output_type  = "LogService"
     project      = "k8s-log-ce1d89e1ffb644a42ad94a226e5e8aa52"
 }
+
+resource "alicloud_log_machine_group" "staging" {}
+
+resource "alicloud_logtail_to_machine_group" "onesubscription-to-staging" {}
