@@ -31,3 +31,35 @@ terraform plan
 │ lock file, run:
 │   terraform init
 ```
+
+
+# basic commands
+
+- init - prep working directory for other comands
+- validate - check if config is valid
+- plan - show changes required by current config
+- apply - create or update infra
+- destroy - destroys previously created infra
+
+# try setting up terraform to create new log project, and log store
+
+- in a file include
+- provider "alicloud" with region
+```
+ resource "alicloud_log_project" "example" {
+  name        = "tf-log"
+  description = "created by terraform"
+  tags        = { "test" : "test" }
+}
+```
+- import a project
+```
+terraform import alicloud_log_project.example "{id of project}
+```
+- now when you try to plan it will take into account the imported item.
+
+- "unimport" a project
+```
+terraform state list
+terraform state rm {name of resource}
+```
