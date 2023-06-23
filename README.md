@@ -57,6 +57,15 @@ terraform plan
 terraform import alicloud_log_project.example "{id of project}
 ```
 - now when you try to plan it will take into account the imported item.
+- note that when importing,
+```hcl
+"alicloud_log_project" "example" {} 
+```
+must be present in your tf project.
+- after the import, you can check the details of your existing resource with
+```
+terraform state show alicloud_log_project.staging
+```
 
 - "unimport" a project
 ```
